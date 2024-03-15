@@ -1,0 +1,14 @@
+{
+    "name": "John Doe",
+    "age": 30,
+    "cars": [
+        {
+            "model": "BMW",
+            "colors": ["red", "white", "black"]
+        },
+        {
+            "model": "Audi",
+            "colors": ["blue", "green"]
+        }
+    ]
+}

@@ -1,0 +1,69 @@
+{
+    "operators": [
+        {
+            "name": "Constant",
+            "identifier": "operator-constant-1",
+            "defaultOutputConnectors": 1,
+            "constantValue": "18",
+            "type": "NUMBER",
+            "inputNodes": [],
+            "outputNodes": ["operator-constant-1-output-1"]
+        },
+        {
+            "name": "Constant",
+            "identifier": "operator-constant-2",
+            "defaultOutputConnectors": 1,
+            "constantValue": "Mr. ",
+            "type": "STRING",
+            "inputNodes": [],
+            "outputNodes": ["operator-constant-2-output-1"]
+        },
+        {
+            "name": "Compare",
+            "identifier": "operator-compare-1",
+            "defaultInputConnectors": 2,
+            "defaultOutputConnectors": 1,
+            "inputNodes": ["operator-compare-input-1", "operator-compare-input-2"],
+            "outputNodes": [ "operator-compare-1-output-1" ],
+            "compareOperator": "&lt=;"
+        },
+        {
+            "name": "Concat",
+            "identifier": "operator-concat-1",
+            "defaultInputConnectors": 2,
+            "defaultOutputConnectors": 1,
+            "inputNodes": ["operator-concat-input-1", "operator-concat-input-2"],
+            "outputNodes": [ "operator-concat-1-output-1" ]
+        }
+    ],
+    "edges" : [
+        {
+            "source": "operator-constant-1-output-1",
+            "target": "operator-compare-input-1"
+        },
+        {
+            "source": "operator-constant-2-output-1",
+            "target": "operator-concat-input-1"
+        },
+        {
+            "source": "operator-compare-1-output-1",
+            "target": "$.underAge"
+        },
+        {
+            "source": "$.name",
+            "target": "operator-concat-input-2"
+        },
+        {
+            "source": "$.age",
+            "target": "$.age"
+        },
+        {
+            "source": "$.cars.[0].model",
+            "target": "$.vehicles.[0].brand"
+        },
+        {
+            "source": "$.cars.[0].color",
+            "target": "$.vehicles.[0].variants.[0].color"
+        }
+    ]
+}

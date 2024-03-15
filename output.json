@@ -1,0 +1,23 @@
+{
+    "Guest Name": "Mr. John Doe",
+    "age": 30,
+    "underAge": false,
+    "vehicles": [
+        {
+            "brand": "BMW",
+            "variants": [
+                {"color" : "black"},
+                {"color" : "white"},
+                {"color" : "red"}
+            ]
+        },
+        {
+            "brand": "Audi",
+            "variants": [
+                {"color" : "black"},
+                {"color" : "white"},
+                {"color" : "red"}
+            ]
+        }
+    ]
+}

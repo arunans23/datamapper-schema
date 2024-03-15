@@ -1,0 +1,51 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Generated schema for Root",
+    "type": "object",
+    "properties": {
+      "Guest Name": {
+        "type": "string"
+      },
+      "age": {
+        "type": "number"
+      },
+      "underAge": {
+        "type": "boolean"
+      },
+      "vehicles": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "brand": {
+              "type": "string"
+            },
+            "variants": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "color": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "color"
+                ]
+              }
+            }
+          },
+          "required": [
+            "brand",
+            "variants"
+          ]
+        }
+      }
+    },
+    "required": [
+      "Guest Name",
+      "ageInDays",
+      "underAge",
+      "vehicles"
+    ]
+  }
