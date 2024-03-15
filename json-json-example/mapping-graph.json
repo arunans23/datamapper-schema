@@ -23,7 +23,7 @@
             "identifier": "operator-compare-1",
             "defaultInputConnectors": 2,
             "defaultOutputConnectors": 1,
-            "inputNodes": ["operator-compare-input-1", "operator-compare-input-2"],
+            "inputNodes": ["operator-compare-1-input-1", "operator-compare-1-input-2"],
             "outputNodes": [ "operator-compare-1-output-1" ],
             "compareOperator": "&lt=;"
         },
@@ -32,26 +32,34 @@
             "identifier": "operator-concat-1",
             "defaultInputConnectors": 2,
             "defaultOutputConnectors": 1,
-            "inputNodes": ["operator-concat-input-1", "operator-concat-input-2"],
+            "inputNodes": ["operator-concat-1-input-1", "operator-concat-1-input-2"],
             "outputNodes": [ "operator-concat-1-output-1" ]
         }
     ],
     "edges" : [
         {
-            "source": "operator-constant-1-output-1",
-            "target": "operator-compare-input-1"
-        },
-        {
             "source": "operator-constant-2-output-1",
-            "target": "operator-concat-input-1"
-        },
-        {
-            "source": "operator-compare-1-output-1",
-            "target": "$.underAge"
+            "target": "operator-concat-1-input-1"
         },
         {
             "source": "$.name",
-            "target": "operator-concat-input-2"
+            "target": "operator-concat-1-input-2"
+        },
+        {
+            "source": "operator-concat-1-output-1",
+            "target": "$.'Guest Name'"
+        },
+        {
+            "source": "$.age",
+            "target": "operator-compare-1-input-2"
+        },
+        {
+            "source": "operator-compare-1-output-1",
+            "target": "$.'underAge'"
+        },
+        {
+            "source": "operator-constant-1-output-1",
+            "target": "operator-compare-1-input-1"
         },
         {
             "source": "$.age",

@@ -1,0 +1,427 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "operators": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/operator" }
+        },
+        "edges": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/edge" }
+        }
+    },
+    "definitions": {
+        "edge" : {
+            "type": "object",
+            "properties": {
+                "source": { "type": "string" },
+                "target": { "type": "string" }
+            }
+        },
+        "operator": {
+            "oneOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "Constant" },
+                        "identifier": { "type": "string" },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "constantValue": { "type": "string" },
+                        "type": { "type": "string", "enum": ["NUMBER", "STRING", "BOOLEAN"] },
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "Compare" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 2 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "comparisonOperator": { "type": "string", "enum": ["&lt;=", "&gt;=", "===", "==", "&lt;", "&gt;", "!==", "!="] },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "Properties" },
+                        "identifier": { "type": "string" },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "propertyName" : { "type": "string" },
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "GlobalVariable" },
+                        "identifier": { "type": "string" },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "propertyName" : { "type": "string" },
+                        "propertyDefaultValue" : { "type": "string" },
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "CustomFunction" },
+                        "identifier": { "type": "string" },
+                        "functionDefinition": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 2 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "AdvancedCustomFunction" },
+                        "identifier": { "type": "string" },
+                        "functionDefinition": { "type": "string" }
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "Add" },
+                        "inputSizeFixed": { "type": "boolean", "const": false},
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 2 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "Subtract" },
+                        "inputSizeFixed": { "type": "boolean", "const": false},
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 2 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }} 
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "Multiply" },
+                        "inputSizeFixed": { "type": "boolean", "const": false},
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 2 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }} 
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "Divide" },
+                        "inputSizeFixed": { "type": "boolean", "const": false},
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 2 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }} 
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "Ceiling" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 1 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "Floor" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 1 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }} 
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "Round" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 1 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }} 
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "SetPrecision" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 2 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "numberOfDigits": { "type": "number" },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }} 
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "AbsoluteValue" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 1 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }} 
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "Min" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 2 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}  
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "Max" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 2 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }} 
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "IfElse" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 3 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }} 
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "And" },
+                        "identifier": { "type": "string" },
+                        "inputSizeFixed": { "type": "boolean", "const": false},
+                        "defaultInputConnectors": { "type": "number", "const": 2 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }} 
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "Or" },
+                        "identifier": { "type": "string" },
+                        "inputSizeFixed": { "type": "boolean", "const": false},
+                        "defaultInputConnectors": { "type": "number", "const": 2 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }} 
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "Not" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 1 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }} 
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "StringToNumber" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 1 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "StringToBoolean" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 1 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "ToString" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 1 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "Concat" },
+                        "identifier": { "type": "string" },
+                        "inputSizeFixed": { "type": "boolean", "const": false},
+                        "delimiter": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 2 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "Split" },
+                        "identifier": { "type": "string" },
+                        "outputSizeFixed": { "type": "boolean", "const": false},
+                        "delimiter": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 1 },
+                        "defaultOutputConnectors": { "type": "number", "const": 2 },
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "LowerCase" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 1 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "UpperCase" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 1 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "Trim" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 1 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "Replace" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 3 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "target": { "type": "string" },
+                        "replaceString": { "type": "string" },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "Match" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 2 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "pattern": { "type": "string" },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "StringLength" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 1 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "Substring" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 3 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "startIndex": { "type": "number" },
+                        "endIndex": { "type": "number" },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "StartsWith" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 2 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "pattern": { "type": "string" },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "name": { "type": "string", "const": "EndsWith" },
+                        "identifier": { "type": "string" },
+                        "defaultInputConnectors": { "type": "number", "const": 2 },
+                        "defaultOutputConnectors": { "type": "number", "const": 1 },
+                        "pattern": { "type": "string" },
+                        "inputNodes" : {"type": "array", "items": { "type": "string" }},
+                        "outputNodes" : {"type": "array", "items": { "type": "string" }}
+                    }
+                }
+            ]
+        }
+    }
+}

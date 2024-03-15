@@ -1,0 +1,45 @@
+{
+    "$schema" : "http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#",
+    "inputType" : "JSON",
+    "id" : "http://wso2jsonschema.org",
+    "title" : "root",
+    "type" : "object",
+    "properties" : {
+      "name" : {
+        "id" : "http://wso2jsonschema.org/name",
+        "type" : "string"
+      },
+      "age" : {
+        "id" : "http://wso2jsonschema.org/age",
+        "type" : "number"
+      },
+      "cars" : {
+        "id" : "http://wso2jsonschema.org/cars",
+        "type" : "array",
+        "items" : [ {
+          "id" : "http://wso2jsonschema.org/cars/0",
+          "type" : "object",
+          "properties" : {
+            "model" : {
+              "id" : "http://wso2jsonschema.org/cars/0/model",
+              "type" : "string"
+            },
+            "colors" : {
+              "id" : "http://wso2jsonschema.org/cars/0/colors",
+              "type" : "array",
+              "items" : [ {
+                "id" : "http://wso2jsonschema.org/cars/0/colors/0",
+                "type" : "string",
+                "properties" : {
+                  "__" : {
+                    "id" : "http://wso2jsonschema.org/cars/0/colors/0",
+                    "type" : "string"
+                  }
+                }
+              } ]
+            }
+          }
+        } ]
+      }
+    }
+  }
